@@ -3,9 +3,6 @@ import { installGlobals } from "@remix-run/node";
 import { defineConfig, type UserConfig } from "vite";
 import tsconfigPaths from "vite-tsconfig-paths";
 
-import dotenv from 'dotenv';
-dotenv.config();
-
 installGlobals({ nativeFetch: true });
 
 // Related: https://github.com/remix-run/remix/issues/2835#issuecomment-1144102176
@@ -20,7 +17,7 @@ if (
   delete process.env.HOST;
 }
 
-const host = new URL(process.env.SHOPIFY_APP_URL || "https://stagapp.driftcharge.com")
+const host = new URL(process.env.SHOPIFY_APP_URL || "http://localhost")
   .hostname;
 
 let hmrConfig;
@@ -42,6 +39,10 @@ if (host === "localhost") {
 
 export default defineConfig({
   server: {
+    allowedHosts: [host],
+    cors: {
+      preflightContinue: true,
+    },
     port: Number(process.env.PORT || 3000),
     hmr: hmrConfig,
     fs: {
@@ -65,5 +66,8 @@ export default defineConfig({
   ],
   build: {
     assetsInlineLimit: 0,
+  },
+  optimizeDeps: {
+    include: ["@shopify/app-bridge-react", "@shopify/polaris"],
   },
 }) satisfies UserConfig;
