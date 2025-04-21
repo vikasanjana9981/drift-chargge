@@ -20,7 +20,7 @@ if (
   delete process.env.HOST;
 }
 
-const host = new URL(process.env.SHOPIFY_APP_URL || "")
+const host = new URL(process.env.SHOPIFY_APP_URL || "https://stagapp.driftcharge.com")
   .hostname;
 
 let hmrConfig;
