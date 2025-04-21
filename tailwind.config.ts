@@ -5,8 +5,8 @@ import plugin from 'tailwindcss';
 
 export default {
   content: [
-    "./app/**/{**,.client,.server}/**/*.{js,jsx,ts,tsx}",
-    './node_modules/rizzui/dist/*.{js,ts,jsx,tsx}'
+    "./app/**/*.{js,jsx,ts,tsx}",
+    "./node_modules/rizzui/dist/**/*.{js,ts,jsx,tsx}"
   ],
   theme: {
     screens: {
