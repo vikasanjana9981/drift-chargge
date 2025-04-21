@@ -175,3 +175,4 @@ to {
     pointer-events: auto;
   }
 `,F=16,_t=({reverseOrder:e,position:t="top-center",toastOptions:n,gutter:r,children:o,containerStyle:s,containerClassName:c})=>{let{toasts:i,handlers:u}=Ge(n);return y.createElement("div",{id:"_rht_toaster",style:{position:"fixed",zIndex:9999,top:F,left:F,right:F,bottom:F,pointerEvents:"none",...s},className:c,onMouseEnter:u.startPause,onMouseLeave:u.endPause},i.map(l=>{let b=l.position||t,E=u.calculateOffset(l,{reverseOrder:e,gutter:r,defaultPosition:t}),x=xt(b,E);return y.createElement(wt,{id:l.id,key:l.id,onHeightUpdate:u.updateHeight,className:l.visible?Et:"",style:x},l.type==="custom"?L(l.message,l):o?o(l):y.createElement(vt,{toast:l,position:b}))}))},$t=k;export{_t as D,Pt as P,Mt as a,je as b,Ie as c,$t as k,Dt as u};
+//# sourceMappingURL=index-xIj4AxVg.js.map
