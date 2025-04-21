@@ -17,7 +17,7 @@ if (
   delete process.env.HOST;
 }
 
-const host = new URL(process.env.SHOPIFY_APP_URL || "http://localhost")
+const host = new URL(process.env.SHOPIFY_APP_URL || "")
   .hostname;
 
 let hmrConfig;
@@ -39,10 +39,6 @@ if (host === "localhost") {
 
 export default defineConfig({
   server: {
-    allowedHosts: [host],
-    cors: {
-      preflightContinue: true,
-    },
     port: Number(process.env.PORT || 3000),
     hmr: hmrConfig,
     fs: {
@@ -66,8 +62,5 @@ export default defineConfig({
   ],
   build: {
     assetsInlineLimit: 0,
-  },
-  optimizeDeps: {
-    include: ["@shopify/app-bridge-react", "@shopify/polaris"],
   },
 }) satisfies UserConfig;
