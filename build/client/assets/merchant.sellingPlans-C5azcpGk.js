@@ -1,0 +1,1 @@
+import{j as r}from"./index-DngLVFUg.js";import{A as s}from"./AppProxyProvider-DYw7hmfI.js";import{u as t}from"./components-DCDtNDXQ.js";import"./AppProvider-BEiu9rhW.js";import"./context-CAJJeJco.js";const n=({Products:e=[]})=>{const{apiKey:o}=t();return r.jsx(s,{isEmbeddedApp:!1,apiKey:o,children:r.jsx("h1",{children:"Selling Plan"})})};export{n as default};
