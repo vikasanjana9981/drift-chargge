@@ -1,0 +1,64 @@
+update this function for these fields 
+1. Billing type, select , options :- Pay as you go (Auto Renew),Prepaid one time , Prepaid auto renew
+2. Order frequency, number 
+3. Unit, select, options :- Month, week,day, year
+4. Frequency name , text, default :- dynamic {frq} {unit} 
+5. Show description, checkbox, default unchecked
+6. Content, text, only visible when show description checked
+7. Subscription renewal date type, select, options :- Same day of month, specific date
+8. Subscription renewal date, datepicker (only show 1 to 31 dates ), only visible when above valule is specific date
+9. Offer discount, checkbox , default false,
+10. discount value, number, only visible when offer discount is true
+11. discount type, select, options :- Percent, amount off , fixed price only disiable, only visible when discount is true
+12. change discount after specific number of payments, checkbox, default unchecked, only visible when discount is true
+13. Inventory Policy, select, options :- on sale, on fulfilment
+14. Cancellation Policy, select, options :- after initial order, choose specific charge 
+15. allow cancel after charge, number, only visible when  cancellation policy value is choose specific chanrge
+16. Automatic expiration, select, options :- unlitmited, limited
+17. auto cancel after charge, number, only visible when Automatic expiration value is limited
+18. Offer trial, checkbox, default unchecked
+19. Free trial ends period,number, only show when offer trial if checked
+20. free trial end preiod unit, select, options: days, week,year,month, only show when offer trial if checked
+21. free trial discount offer, number  only show when offer trial if checked
+22. free trial discount type , select, percent, fixed
+23. Group Name , text, 
+
+
+1. make a  form field using rizzUI component 
+2. use react-hook-form for repeater
+3. Please create a State Atom using then assign values when change also 
+4. This should be in repeater field 
+5. below is the field details witch each tabs 
+6. make sure its tsx file 
+7. use rizzui latest version not old
+8. use jotai atom for manage state
+
+#General Tab 
+   Order frequency, number 
+   Unit, select, options :- Month, week,day, year
+#Display Contents
+    Frequency name , text, default :- dynamsc {frq} {unit} 
+    Show description, checkbox, default unchecked
+    Content, text, only visible when show description checked
+#Charge on specific days
+    Subscription renewal date type, select, options :- Same day of month, specific date
+    Subscription renewal date, datepicker (only show 1 to 31 dates ), only visible when above valule is specific date
+#Offer Disconts
+    Offer discount, checkbox , default false,
+    discount value, number, only visible when offer discount is true
+    discount type, select, options :- Percent, amount off , fixed price only disiable, only visible when discount is true
+    change discount after specific number of payments, checkbox, default unchecked, only visible when discount is true
+    change discount after, number , only visilble when above is checked
+    Change Discount To, number , Same
+#Policies
+    Inventory Policy, select, options :- on sale, on fulfilment
+    Cancellation Policy, select, options :- after initial order, choose specific charge 
+    allow cancel after charge, number, only visible when  cancellation policy value is choose specific chanrge
+    Automatic expiration, select, options :- unlitmited, limited
+    auto cancel after charge, number, only visible when Automatic expiration value is limited
+#Offer Trial
+    Free trial ends period,number, only show when offer trial if checked
+    free trial end preiod unit, select, options: days, week,year,month, only show when offer trial if checked
+    free trial discount offer, number  only show when offer trial if checked
+    free trial discount type , select, percent, fixed
+

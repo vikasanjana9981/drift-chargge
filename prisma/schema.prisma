@@ -1,0 +1,131 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model ActivityLog {
+  id        Int      @id @default(autoincrement())
+  userId    BigInt
+  action    String
+  details   Json
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id], map: "ActivityLog_user_relation")
+
+  @@index([userId], map: "ActivityLog_user_idx")
+}
+
+model AppSetting {
+  id           Int      @id @default(autoincrement())
+  userId       BigInt
+  settingKey   String
+  settingValue String
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime
+  user         User     @relation(fields: [userId], references: [id], map: "AppSetting_user_relation")
+
+  @@index([userId], map: "AppSetting_user_idx")
+}
+
+model CustomerExtension {
+  id            Int      @id @default(autoincrement())
+  userId        BigInt
+  customerId    String
+  extensionData Json
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime
+  user          User     @relation(fields: [userId], references: [id], map: "CustomerExtension_user_relation")
+
+  @@index([userId], map: "CustomerExtension_user_idx")
+}
+
+model DashboardAnalytics {
+  id         Int      @id @default(autoincrement())
+  userId     BigInt
+  metric     String
+  value      Int
+  recordDate DateTime
+  createdAt  DateTime @default(now())
+  user       User     @relation(fields: [userId], references: [id], map: "DashboardAnalytics_user_relation")
+
+  @@index([userId], map: "DashboardAnalytics_user_idx")
+}
+
+model Session {
+  id            String    @id @db.VarChar(255)
+  shop          String    @db.VarChar(255)
+  state         String    @db.VarChar(255)
+  isOnline      Boolean   @default(false)
+  scope         String?   @db.Text()
+  expires       DateTime?
+  accessToken   String    @db.Text
+  userId        BigInt?
+  firstName     String?   @db.VarChar(255)
+  lastName      String?   @db.VarChar(255)
+  email         String?   @db.VarChar(255)
+  accountOwner  Boolean   @default(false)
+  locale        String?   @db.VarChar(10)
+  collaborator  Boolean?
+  emailVerified Boolean?
+  user          User?     @relation(fields: [userId], references: [id], map: "Session_user_relation")
+
+  @@index([userId], map: "Session_user_idx")
+}
+
+model Theme {
+  id             Int      @id @default(autoincrement())
+  userId         BigInt
+  themeId        String
+  themeName      String
+  status         String   @default("active")
+  configurations Json
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime
+  user           User     @relation(fields: [userId], references: [id], map: "Theme_user_relation")
+
+  @@index([userId], map: "Theme_user_idx")
+}
+
+model Transaction {
+  id              Int      @id @default(autoincrement())
+  userId          BigInt
+  transactionType String
+  amount          Float
+  status          String
+  createdAt       DateTime @default(now())
+  user            User     @relation(fields: [userId], references: [id], map: "Transaction_user_relation")
+
+  @@index([userId], map: "Transaction_user_idx")
+}
+
+model VendorDashboardSetting {
+  id           Int      @id @default(autoincrement())
+  userId       BigInt
+  settingName  String
+  settingValue Json
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime
+  user         User     @relation(fields: [userId], references: [id], map: "VendorDashboardSetting_user_relation")
+
+  @@index([userId], map: "VendorDashboardSetting_user_idx")
+}
+
+model User {
+  id                     BigInt                  @id @default(autoincrement())
+  shopifyStoreId         String                  @unique(map: "User_shopifyStoreId_key")
+  storeName              String
+  email                  String                  @unique(map: "User_email_key")
+  createdAt              DateTime                @default(now())
+  updatedAt              DateTime
+  activityLog            ActivityLog[]
+  appSetting             AppSetting[]
+  customerExtension      CustomerExtension[]
+  dashboardAnalytics     DashboardAnalytics[]
+  session                Session[]
+  theme                  Theme[]
+  transaction            Transaction[]
+  vendorDashboardSetting VendorDashboardSetting[]
+}

@@ -1,0 +1,104 @@
+{
+input [SellingPlanGroupInput!]{
+    appId [String]
+    description [String]
+    merchantCode [String]
+    name [String]
+    options [String!]
+    position [int]
+    sellingPlansToCreate [SellingPlanInput!]{
+        billingPolicy [SellingPlanBillingPolicyInput]{
+            fixed [SellingPlanFixedBillingPolicyInput]{
+                checkoutCharge [SellingPlanCheckoutChargeInput]{
+                    type [SellingPlanCheckoutChargeType]{
+                        PERCENTAGE
+                        PRICE
+                    }
+                    value [SellingPlanCheckoutChargeValueInput]{
+                        fixedValue [Decimal]
+                        percentage [Float]
+                    }
+                    remainingBalanceChargeExactTime [DateTime]
+                    remainingBalanceChargeTimeAfterCheckout [String]
+                    remainingBalanceChargeTrigger [SellingPlanRemainingBalanceChargeTrigger] [enum] ["EXACT_TIME", "NO_REMAINING_BALANCE", "TIME_AFTER_CHECKOUT"]
+                }
+            }
+
+            recurring [SellingPlanRecurringBillingPolicyInput]{
+                anchors [SellingPlanAnchorInput!]{
+                    cutoffDay [int]
+                }
+                interval [SellingPlanInterval] [enum] ["DAY", "MONTH", "WEEK", "YEAR"]
+                intervalCount [int]
+                maxCycles [int]
+                minCycles [int]
+            }
+        }
+        category [SellingPlanCategory] [enum] ["OTHER", "PRE_ORDER", "SUBSCRIPTION", "TRY_BEFORE_YOU_BUY"]
+        deliveryPolicy [SellingPlanDeliveryPolicyInput] {
+            fixed [SellingPlanFixedDeliveryPolicyInput]{
+                anchors [SellingPlanAnchorInput!]{
+                    cutoffDay [int]
+                    day [int]
+                    month [int]
+                    type [enum] ["MONTHDAY", "WEEKDAY" , "YEARDAY"]
+                }
+                cutoff [int]
+                fulfillmentExactTime [DateTime]
+                fulfillmentTrigger [SellingPlanFulfillmentTrigger] [enum] ["ANCHOR", "ASAP", "EXACT_TIME","UNKNOWN"]
+                intent [SellingPlanFixedDeliveryPolicyIntent] [enum] ["FULFILLMENT_BEGIN"]
+                preAnchorBehavior [SellingPlanFixedDeliveryPolicyPreAnchorBehavior] [enum] ["ASAP", "NEXT"]
+            }
+            recurring [SellingPlanRecurringDeliveryPolicyInput]{
+                anchors [SellingPlanAnchorInput!]{
+                    cutoffDay [int]
+                    day [int]
+                    month [int]
+                    type [enum] ["MONTHDAY", "WEEKDAY" , "YEARDAY"]
+                }
+                cutoff [int]
+                fulfillmentExactTime [DateTime]
+                fulfillmentTrigger [SellingPlanFulfillmentTrigger] [enum] ["ANCHOR", "ASAP", "EXACT_TIME","UNKNOWN"]
+                intent [SellingPlanFixedDeliveryPolicyIntent] [enum] ["FULFILLMENT_BEGIN"]
+                preAnchorBehavior [SellingPlanFixedDeliveryPolicyPreAnchorBehavior] [enum] ["ASAP", "NEXT"]
+            }
+        }
+        description [String]
+        id [ID]
+        inventoryPolicy [SellingPlanInventoryPolicyInput]{
+            reserve [enum] ["ON_FULFILLMENT","ON_SALE"]
+        }
+        metafields [MetafieldInput!]
+        name
+        options [String!]
+        position [int]
+        pricingPolicies [SellingPlanPricingPolicyInput!]{
+            fixed [SellingPlanFixedPricingPolicyInput]{
+                adjustmentType [SellingPlanPricingPolicyAdjustmentType] [enum] ["FIXED_AMOUNT", "PERCENTAGE", "PRICE"]
+                adjustmentValue [SellingPlanPricingPolicyValueInput]{
+                    fixedValue [Decimal] 
+                    percentage [Float]
+                }
+                id
+            }
+            recurring [SellingPlanRecurringPricingPolicyInput]{
+                adjustmentType [SellingPlanPricingPolicyAdjustmentType] [enum] ["FIXED_AMOUNT", "PERCENTAGE", "PRICE"]
+                adjustmentValue [SellingPlanPricingPolicyValueInput]{
+                    fixedValue [Decimal] 
+                    percentage [Float]
+                }
+                afterCycle [Int!]
+                id
+            }
+        }
+    }
+    sellingPlansToDelete [ID!]
+    sellingPlansToUpdate[SellingPlanInput!]{
+        all options as create
+    }
+}
+resources : [SellingPlanGroupResourceInput]{
+    productIds : [ID!]
+    productVariantIds : [ID!]
+}
+}

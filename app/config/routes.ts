@@ -1,0 +1,37 @@
+export const routes = {
+  home : '/merchant/home',
+  analytics : '/merchant/analytics',
+  subscriptions: {
+    dashboard: '/merchant/subscriptions',
+  },
+  customers: {
+    dashboard: '/merchant/customers',
+  },
+  orders: {
+    dashboard: '/merchant/orders',
+  },
+  products: {
+    products: '/merchant/products',
+    collections: '/merchant/collections',
+    gifts: '/merchant/gifts',
+    sellingPlans:"/merchant/sellingPlans"
+  },
+  discounts: {
+    dashboard: '/merchant/discounts',
+  },
+  tools: {
+    bulkUpdates: '/merchant/tools/bulk-updates',
+    migrations: '/merchant/tools/migrations',
+    dataExports: '/merchant/tools/data-exports',
+  },
+  storefront: {
+    customerPortal: '/merchant/storefront/customer-portal',
+    widgets: '/merchant/storefront/widgets',
+    translations: '/merchant/storefront/translations',
+  },
+  settings: {
+    general: '/merchant/settings/general',
+    notifications: '/merchant/settings/notifications',
+  },
+  help: '/merchant/help',
+};
