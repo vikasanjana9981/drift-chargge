@@ -1,4 +1,4 @@
-import { FEATURED_MEDIA_FRAGMENT } from "../featuredmedia";
+import { FEATURED_MEDIA_FRAGMENT } from "../featuredMedia";
 import { PRODUCT_VARIANTNODE_FRAGMENT } from "./variantNode";
 import { SELLING_PLAN_GROUP_FRAGMENT } from "./sellingPlanGroup";
 import { SEELING_PLAN_GROUPS_COUNT } from "./sellingPlanGroupsCount";

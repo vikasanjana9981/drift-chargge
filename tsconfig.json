@@ -1,5 +1,5 @@
 {
-  "include": ["env.d.ts", "**/*.ts", "**/*.tsx", "postcss.config.js", "app/graphql/queries/products/queryProducts.js", "app/routes/merchant.products.$productId._indextsx"],
+  "include": ["env.d.ts", "**/*.ts", "**/*.tsx", "postcss.config.js", "app/graphql/queries/products/queryProducts.js", "app/routes/merchant.products.$productId._indextsx", "app/graphql/fragments/product/SellingPlanCheckoutCharge.js", "app/graphql/fragments/product/anchors.js", "app/graphql/fragments/product/sellingPlanGroup.js", "app/graphql/fragments/product/sellingPlans.js", "app/graphql/fragments/product/variantNode.js", "app/graphql/fragments/currentAppInstallation.js", "app/graphql/fragments/featuredMedia.js"],
   "compilerOptions": {
     "lib": ["DOM", "DOM.Iterable", "ES2022"],
     "strict": true,
