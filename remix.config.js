@@ -1,9 +1,13 @@
 /** @type {import('@remix-run/dev').AppConfig} */
 module.exports = {
+    // Default paths (optional if unchanged)
     appDirectory: "app",
     assetsBuildDirectory: "public/build",
     publicPath: "/build/",
-    serverBuildPath: "build/server/index.js",  // <-- Forces server output to this folder
+    serverBuildPath: "build/index.js",
     serverModuleFormat: "esm",
+  
+    // ✅ Enable source maps
+    sourcemap: true,
   };
   
